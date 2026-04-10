@@ -4,8 +4,8 @@
 
 repository:
   homepage: https://esm.dev
-  description: npmx posva
-  topics: posva, cli, card
+  description: Personal linting rules for oxlint
+  topics: oxlint, plugin, rules
 
 labels:
   - name: 🐞 bug
