@@ -1,22 +1,23 @@
 {
-  "name": "posva-template-lib",
+  "name": "oxlint-plugin-posva",
   "version": "0.0.0",
-  "description": "A Vue.js library template",
+  "description": "Personal oxlint rules plugin by posva",
   "keywords": [
-    "vue",
-    "library",
-    "template"
+    "oxlint",
+    "linter",
+    "plugin",
+    "eslint"
   ],
-  "homepage": "https://github.com/posva/posva-template-lib",
+  "homepage": "https://github.com/posva/oxlint-plugin-posva",
   "bugs": {
-    "url": "https://github.com/posva/posva-template-lib/issues"
+    "url": "https://github.com/posva/oxlint-plugin-posva/issues"
   },
   "license": "MIT",
   "author": {
     "name": "Eduardo San Martin Morote",
     "email": "posva13@gmail.com"
   },
-  "repository": "posva/posva-template-lib",
+  "repository": "posva/oxlint-plugin-posva",
   "funding": "https://github.com/sponsors/posva",
   "files": [
     "dist",
@@ -55,21 +56,21 @@
     "prepublishOnly": "pnpm run build",
     "size": "size-limit"
   },
+  "dependencies": {
+    "@oxlint/plugins": "^1.59.0"
+  },
   "devDependencies": {
     "@posva/prompts": "^2.4.4",
     "@size-limit/esbuild-why": "^12.0.1",
     "@size-limit/preset-small-lib": "^12.0.1",
     "@types/node": "^24.12.0",
     "@types/semver": "^7.7.1",
-    "@vitejs/plugin-vue": "^6.0.5",
     "@vitest/coverage-v8": "^4.1.4",
     "@vitest/ui": "^4.1.4",
-    "@vue/test-utils": "^2.4.6",
     "chalk": "^5.6.2",
     "conventional-changelog": "^7.2.0",
     "conventional-changelog-angular": "^8.3.1",
     "execa": "^9.6.1",
-    "happy-dom": "^20.8.9",
     "lint-staged": "^16.4.0",
     "oxfmt": "^0.44.0",
     "oxlint": "^1.59.0",
@@ -78,11 +79,7 @@
     "size-limit": "^12.0.1",
     "tsdown": "^0.21.7",
     "typescript": "~6.0.2",
-    "vitest": "^4.1.4",
-    "vue": "^3.5.32"
-  },
-  "peerDependencies": {
-    "vue": "^3.5.17"
+    "vitest": "^4.1.4"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged",
@@ -96,10 +93,7 @@
     {
       "name": "everything",
       "path": "dist/index.mjs",
-      "import": "*",
-      "ignore": [
-        "vue"
-      ]
+      "import": "*"
     }
   ],
   "packageManager": "pnpm@10.32.1",

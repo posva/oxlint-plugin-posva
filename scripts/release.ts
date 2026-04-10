@@ -52,7 +52,7 @@ Flags:
 }
 
 const EXPECTED_BRANCH = 'main'
-const MAIN_PKG_NAME = 'posva-template-lib'
+const MAIN_PKG_NAME = 'oxlint-plugin-posva'
 const IS_MAIN_PKG_AT_ROOT = true
 const PKG_FOLDERS = [join(__dirname, '..')]
 

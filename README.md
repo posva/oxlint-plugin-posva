@@ -1,43 +1,36 @@
-# posva-template-lib
+# oxlint-plugin-posva
 
-[![npm version](https://img.shields.io/npm/v/posva-template-lib.svg)](https://npmx.dev/package/posva-template-lib)
-[![ci](https://github.com/posva/template-lib-ts/actions/workflows/ci.yml/badge.svg)](https://github.com/posva/template-lib-ts/actions/workflows/ci.yml)
+[![npm version](https://img.shields.io/npm/v/oxlint-plugin-posva.svg)](https://npmx.dev/package/oxlint-plugin-posva)
+[![ci](https://github.com/posva/oxlint-plugin-posva/actions/workflows/ci.yml/badge.svg)](https://github.com/posva/oxlint-plugin-posva/actions/workflows/ci.yml)
 
-A Vue.js library template.
+Personal [oxlint](https://oxc.rs) rules plugin.
 
-## Getting Started
+## Installation
 
-1. Fork or clone this repository
-2. Follow the **Migration Checklist** below to customize it for your library
-3. Replace `src/useHello.ts` with your own code
-4. Run `pnpm install` and start developing
+```bash
+pnpm add -D oxlint-plugin-posva
+```
 
-## Migration Checklist
+## Configuration
 
-After forking, find & replace `posva-template-lib` with your package name, then go through these steps:
+In `.oxlintrc.json`:
 
-1. **Find & replace** `posva-template-lib` with your package name in all files
-2. **Update `globalName`** in `tsdown.config.ts` (e.g. `PosvaTemplateLib` → `YourLibName`)
-3. **Update `package.json`**: `description`, `keywords`, `homepage`, `bugs`, `repository`
-4. **Update `LICENSE`** year and copyright holder
-5. **Update `release.yml`** repo condition (`github.repository == '...'`)
-6. **Set up npm trusted publishing** (see comments in `release.yml`)
-7. **Set up Codecov** (optional): add `codecov/codecov-action` step to `ci.yml`
-8. **Replace `src/`** with your library code
+```jsonc
+{
+  "jsPlugins": ["oxlint-plugin-posva"],
+  "rules": {
+    "posva/vitest-prefer-to-have-been-called-times": "error",
+  },
+}
+```
 
-## Scripts
+## Rules
 
-| Command           | Description                |
-| ----------------- | -------------------------- |
-| `pnpm dev`        | Start Vitest UI            |
-| `pnpm build`      | Build with tsdown          |
-| `pnpm test`       | Build + test + typecheck   |
-| `pnpm test:cov`   | Run tests with coverage    |
-| `pnpm test:types` | Typecheck                  |
-| `pnpm lint`       | Lint with oxlint           |
-| `pnpm fmt`        | Format with oxfmt          |
-| `pnpm release`    | Interactive release script |
-| `pnpm size`       | Check bundle size          |
+### vitest
+
+| Rule                                      | Description                                                                                  | Fixable |
+| ----------------------------------------- | -------------------------------------------------------------------------------------------- | ------- |
+| `vitest-prefer-to-have-been-called-times` | Enforce `toHaveBeenCalledTimes(N)` over `toHaveBeenCalledOnce()` or `not.toHaveBeenCalled()` | Yes     |
 
 ## License
 
