@@ -1,13 +1,7 @@
-import { describe, it } from 'vitest'
 import { RuleTester } from 'oxlint/plugins-dev'
 import { vitestPreferToHaveBeenCalledTimes } from './prefer-to-have-been-called-times'
 
-RuleTester.describe = describe
-RuleTester.it = it
-
-const tester = new RuleTester({
-  languageOptions: { parserOptions: { lang: 'ts' } },
-})
+const tester = new RuleTester()
 
 tester.run('posva/vitest-prefer-to-have-been-called-times', vitestPreferToHaveBeenCalledTimes, {
   valid: [
