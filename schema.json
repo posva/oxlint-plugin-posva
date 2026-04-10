@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Oxlintrc with oxlint-plugin-posva",
+  "description": "Oxlint configuration extended with posva plugin rules.",
+  "allOf": [
+    {
+      "$ref": "../oxlint/configuration_schema.json"
+    }
+  ],
+  "properties": {
+    "rules": {
+      "properties": {
+        "posva/style-prefer-inline-variable": {
+          "description": "Disallow variable declarations that are only read once, preferring to inline the initializer at the usage site.",
+          "oneOf": [
+            { "$ref": "#/definitions/Severity" },
+            {
+              "type": "array",
+              "items": [
+                { "$ref": "#/definitions/Severity" },
+                {
+                  "type": "object",
+                  "properties": {
+                    "ignoreMultipleWords": {
+                      "type": "boolean",
+                      "description": "When true, variables with multi-word names (camelCase, snake_case, PascalCase) are not flagged.",
+                      "default": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              ],
+              "minItems": 1,
+              "maxItems": 2,
+              "additionalItems": false
+            }
+          ]
+        },
+        "posva/vitest-prefer-to-have-been-called-times": {
+          "description": "Enforce using toHaveBeenCalledTimes(N) instead of toHaveBeenCalledOnce() or not.toHaveBeenCalled().",
+          "oneOf": [
+            { "$ref": "#/definitions/Severity" },
+            {
+              "type": "array",
+              "items": [{ "$ref": "#/definitions/Severity" }],
+              "minItems": 1,
+              "maxItems": 1,
+              "additionalItems": false
+            }
+          ]
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Severity": {
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": ["allow", "off", "warn", "error", "deny"],
+          "description": "Oxlint rule severity as a string."
+        },
+        {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2,
+          "description": "Oxlint rule severity as a number (0=off, 1=warn, 2=error)."
+        }
+      ]
+    }
+  }
+}

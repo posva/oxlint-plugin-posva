@@ -17,10 +17,35 @@ In `.oxlintrc.json`:
 
 ```jsonc
 {
+  "$schema": "./node_modules/oxlint-plugin-posva/schema.json",
   "jsPlugins": ["oxlint-plugin-posva"],
   "rules": {
     "posva/vitest-prefer-to-have-been-called-times": "error",
   },
+}
+```
+
+### Editor Autocompletion
+
+The `$schema` above extends the base oxlint schema with typed entries for this plugin's rules, giving you autocompletion for rule names and their options.
+
+If you use multiple JS plugins that each ship their own schema, you can create a local schema that merges them all with `allOf`:
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "allOf": [
+    { "$ref": "./node_modules/oxlint-plugin-posva/schema.json" },
+    { "$ref": "./node_modules/oxlint-plugin-other/schema.json" }
+  ]
+}
+```
+
+Save it as e.g. `oxlintrc-schema.json` and reference it in your config:
+
+```jsonc
+{
+  "$schema": "./oxlintrc-schema.json",
 }
 ```
 

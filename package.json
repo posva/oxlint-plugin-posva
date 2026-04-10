@@ -21,6 +21,7 @@
   "funding": "https://github.com/sponsors/posva",
   "files": [
     "dist",
+    "schema.json",
     "LICENSE",
     "README.md"
   ],
@@ -37,6 +38,7 @@
   },
   "exports": {
     ".": "./dist/index.mjs",
+    "./schema.json": "./schema.json",
     "./package.json": "./package.json"
   },
   "publishConfig": {
