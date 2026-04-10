@@ -29,7 +29,11 @@ export const vitestPreferToHaveBeenCalledTimes: Rule = defineRule({
             messageId: 'preferCalledTimes',
             data: { count: '1', original: 'toHaveBeenCalledOnce()' },
             fix(fixer) {
-              return fixer.replaceText(callee.property, 'toHaveBeenCalledTimes')
+              // Replace from method name through closing paren: toHaveBeenCalledOnce() → toHaveBeenCalledTimes(1)
+              return fixer.replaceTextRange(
+                [callee.property.range[0], node.range[1]],
+                'toHaveBeenCalledTimes(1)',
+              )
             },
           })
           return
@@ -47,11 +51,10 @@ export const vitestPreferToHaveBeenCalledTimes: Rule = defineRule({
             messageId: 'preferCalledTimes',
             data: { count: '0', original: 'not.toHaveBeenCalled()' },
             fix(fixer) {
-              // Replace from the `.not` object start through the end of the call
-              // e.g. `expect(spy).not.toHaveBeenCalled()` → `expect(spy).toHaveBeenCalledTimes(0)`
+              // Replace from `not` through closing paren: not.toHaveBeenCalled() → toHaveBeenCalledTimes(0)
               return fixer.replaceTextRange(
-                [object.range[0], node.range[1]],
-                '.toHaveBeenCalledTimes(0)',
+                [object.property.range[0], node.range[1]],
+                'toHaveBeenCalledTimes(0)',
               )
             },
           })
