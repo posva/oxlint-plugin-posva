@@ -26,6 +26,12 @@ In `.oxlintrc.json`:
 
 ## Rules
 
+### style
+
+| Rule                           | Description                                                                                     | Fixable |
+| ------------------------------ | ----------------------------------------------------------------------------------------------- | ------- |
+| `style-prefer-inline-variable` | Flag variables read only once, suggest inlining. Option `ignoreMultipleWords` (default: `true`) | Yes     |
+
 ### vitest
 
 | Rule                                      | Description                                                                                  | Fixable |

@@ -5,6 +5,7 @@
 1. Create rule in `src/rules/<category>/<rule-name>.ts` using `defineRule` from `@oxlint/plugins`
 2. Create test as `<rule-name>.spec.ts` next to it — just `new RuleTester()` + `.run()` (vitest wiring and default config handled by `src/vitest-setup.ts`)
 3. Register in `src/index.ts` under `rules` as `<category>-<rule-name>`
+4. Add the rule to the `README.md` rules table under its category (create the category section if new)
 
 Rules are referenced as `posva/<category>-<rule-name>` (e.g. `posva/vitest-prefer-to-have-been-called-times`).
 
