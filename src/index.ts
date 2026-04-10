@@ -1,11 +1,13 @@
 import type { Plugin } from '@oxlint/plugins'
 import { definePlugin, eslintCompatPlugin } from '@oxlint/plugins'
+import { stylePreferInlineVariable } from './rules/style/prefer-inline-variable'
 import { vitestPreferToHaveBeenCalledTimes } from './rules/vitest/prefer-to-have-been-called-times'
 
 const plugin: Plugin = eslintCompatPlugin(
   definePlugin({
     meta: { name: 'posva' },
     rules: {
+      'style-prefer-inline-variable': stylePreferInlineVariable,
       'vitest-prefer-to-have-been-called-times': vitestPreferToHaveBeenCalledTimes,
     },
   }),
