@@ -1,3 +1,14 @@
-export const version = '0.0.0'
+import type { Plugin } from '@oxlint/plugins'
+import { definePlugin, eslintCompatPlugin } from '@oxlint/plugins'
+import { vitestPreferToHaveBeenCalledTimes } from './rules/vitest/prefer-to-have-been-called-times'
 
-export { useHello } from './useHello'
+const plugin: Plugin = eslintCompatPlugin(
+  definePlugin({
+    meta: { name: 'posva' },
+    rules: {
+      'vitest-prefer-to-have-been-called-times': vitestPreferToHaveBeenCalledTimes,
+    },
+  }),
+)
+
+export default plugin
